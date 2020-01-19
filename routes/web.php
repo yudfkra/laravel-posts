@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::redirect('/home', '/');
+
+Route::get('/my-post', 'PostController@myPost')->name('post.user');
+Route::resource('post', 'PostController');
+Route::get('/', 'PostController@index')->name('index');
